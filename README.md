@@ -72,6 +72,10 @@ Run unit tests only:
     uv run pytest tests/ -m unit -v --cov=main --cov-report=html --cov-report=term
 
 Run integration tests:
+    # First start the server in one terminal:
+    uv run uvicorn main:app --reload
+
+    # Then in another terminal:
     uv run pytest tests/ -m integration -v --cov=main --cov-append
 
 Tests include:

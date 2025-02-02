@@ -1,16 +1,11 @@
 import pytest
 import httpx
-from httpx import ASGITransport
-from main import app
 
 @pytest.mark.asyncio
 @pytest.mark.integration
 async def test_api_integration():
-    """Test full API integration with actual endpoints"""
-    async with httpx.AsyncClient(
-        transport=ASGITransport(app=app),
-        base_url="http://testserver"
-    ) as client:
+    """Test full API integration with actual running server"""
+    async with httpx.AsyncClient(base_url="http://localhost:8000") as client:
         # Test ping endpoint
         response = await client.get("/ping")
         assert response.status_code == 200
