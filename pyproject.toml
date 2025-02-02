@@ -8,5 +8,8 @@ dependencies = [
     "fastapi",
     "uvicorn[standard]",
     "google-generativeai",
-    "python-dotenv"
+    "python-dotenv",
+    "pytest",
+    "httpx",
+    "pytest-asyncio"
 ]
