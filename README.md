@@ -1,12 +1,12 @@
-# Dont Block Ping Demo - FastAPI with Gemini Integration
+# Dont Block Ping Demo - FastAPI
 
-A FastAPI-based service with Gemini AI integration demonstrating basic health checks and LLM interactions.
+A FastAPI-based service demonstrating basic health checks and blocking/non-blocking behavior.
 
 ## Features
 
 - 🚀 FastAPI web server
 - ✅ /ping health check endpoint
-- 🤖 /ask endpoint for Gemini AI queries
+
 - 🔒 Environment-based configuration
 - 🧪 Comprehensive test suite
 
@@ -16,7 +16,6 @@ A FastAPI-based service with Gemini AI integration demonstrating basic health ch
 
 - Python 3.12+
 - UV package manager (<https://github.com/astral-sh/uv>)
-- Gemini API key (<https://ai.google.dev/>)
 
 ### Installation
 
@@ -24,14 +23,6 @@ A FastAPI-based service with Gemini AI integration demonstrating basic health ch
 
 For development with live reload:
     uv pip install -e .[dev]
-
-### Configuration
-
-1. Create .env file:
-
-    cp .env.template .env
-
-2. Edit the .env file and add your API key
 
 ### Running the Server
 
@@ -59,19 +50,7 @@ Response:
       "slept": 5
     }
 
-### POST /ask
-
-Submit prompts to Gemini AI
-
-Request Body:
-    {
-      "prompt": "your question here"
-    }
-
-Example:
-    curl -X POST <http://localhost:8000/ask> \
-      -H "Content-Type: application/json" \
-      -d '{"prompt": "Explain quantum computing in simple terms"}'
+Example: `curl -X GET http://localhost:8000/ping`
 
 ## Testing
 
@@ -95,14 +74,7 @@ Tests include:
 
 - Environment variable validation
 - Endpoint response checks
-- Gemini API integration
 - Full service integration tests
-
-## Environment Variables
-
-| Variable          | Description                      |
-|-------------------|----------------------------------|
-| GEMINI_API_KEY    | Google Gemini API key (required) |
 
 ## Contributing
 
