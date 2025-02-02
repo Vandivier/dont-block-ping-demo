@@ -2,6 +2,7 @@ import pytest
 import httpx
 
 @pytest.mark.asyncio
+@pytest.mark.integration
 async def test_api_integration():
     """Test full API integration with actual endpoints"""
     async with httpx.AsyncClient(app=app, base_url="http://testserver") as client:

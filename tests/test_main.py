@@ -16,6 +16,7 @@ def test_ping_route():
     assert response.json() == {"status": "ok", "message": "pong"}
 
 @pytest.mark.asyncio
+@pytest.mark.unit
 async def test_gemini_integration():
     """Test basic Gemini API interaction"""
     from main import model

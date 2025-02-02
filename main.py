@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 import os
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Body
 from fastapi.middleware.cors import CORSMiddleware
 import google.generativeai as genai
 
@@ -30,7 +30,10 @@ async def ping():
     return {"status": "ok", "message": "pong"}
 
 @app.post("/ask")
-async def ask_llm(prompt: str):
+async def ask_llm(payload: dict = Body(...)):
+    prompt = payload.get("prompt")
+    if not prompt:
+        raise HTTPException(status_code=400, detail="Prompt is required")
     try:
         response = model.generate_content(prompt)
         return {

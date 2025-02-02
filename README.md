@@ -59,15 +59,20 @@ Request Body:
     }
 
 Example:
-    curl -X POST "<http://localhost:8000/ask>" \
+    curl -X POST <http://localhost:8000/ask> \
       -H "Content-Type: application/json" \
-      -d '{"prompt":"Explain quantum computing in simple terms"}'
+      -d '{"prompt": "Explain quantum computing in simple terms"}'
 
 ## Testing
 
-Run the test suite:
+Run all tests (unit + integration):
+    uv run pytest tests/ -v
 
-    pytest tests/ -v
+Run unit tests only:
+    uv run pytest tests/ -m unit -v
+
+Run integration tests:
+    uv run pytest tests/ -m integration -v
 
 Tests include:
 
