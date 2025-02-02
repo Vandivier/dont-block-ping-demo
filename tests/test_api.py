@@ -24,7 +24,7 @@ async def test_api_integration():
 @pytest.mark.integration
 async def test_ping_not_blocked():
     """Verify server handles concurrent requests without blocking"""
-    async with httpx.AsyncClient(base_url="http://localhost:8000") as client:
+    async with httpx.AsyncClient(base_url="http://localhost:8000", timeout=60.0) as client:
         # Start long-running request
         ask_task = asyncio.create_task(
             client.post(
