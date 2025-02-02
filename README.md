@@ -1,4 +1,4 @@
-# Dont Block Ping Demo
+# Dont Block Ping Demo - FastAPI with Gemini Integration
 
 A FastAPI-based service with Gemini AI integration demonstrating basic health checks and LLM interactions.
 
@@ -29,11 +29,13 @@ For development with live reload:
 
 1. Create .env file:
 
-    echo "GEMINI_API_KEY=your_api_key_here" > .env
+    cp .env.template .env
+
+2. Edit the .env file and add your API key
 
 ### Running the Server
 
-    uvicorn main:app --reload
+    uv run uvicorn main:app --reload
 
 ## API Reference
 
