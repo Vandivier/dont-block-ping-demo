@@ -23,11 +23,13 @@ if not GEMINI_API_KEY:
     raise RuntimeError("GEMINI_API_KEY environment variable not set")
 
 genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel('gemini-pro')
+model = genai.GenerativeModel("gemini-pro")
+
 
 @app.get("/ping")
 async def ping():
     return {"status": "ok", "message": "pong"}
+
 
 @app.post("/ask")
 async def ask_llm(payload: dict = Body(...)):
@@ -36,16 +38,14 @@ async def ask_llm(payload: dict = Body(...)):
         raise HTTPException(status_code=400, detail="Prompt is required")
     try:
         response = model.generate_content(prompt)
-        return {
-            "status": "success",
-            "response": response.text
-        }
+        return {"status": "success", "response": response.text}
     except Exception as e:
         raise HTTPException(
-            status_code=503,
-            detail=f"Error generating response: {str(e)}"
+            status_code=503, detail=f"Error generating response: {str(e)}"
         )
+
 
 if __name__ == "__main__":
     import uvicorn
+
     uvicorn.run(app, host="0.0.0.0", port=8000, reload=True)
