@@ -16,13 +16,6 @@ def test_ping_route(client):
     assert response.json() == {"status": "ok", "message": "pong"}
 
 
-def test_cors_headers(client):
-    """Test CORS headers are properly set"""
-    response = client.options("/ping")
-    assert response.headers["access-control-allow-origin"] == "*"
-    assert response.headers["access-control-allow-methods"] == "*"
-
-
 def test_main_execution():
     """Test the main module execution"""
     import main

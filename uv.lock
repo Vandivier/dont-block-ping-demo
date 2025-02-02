@@ -107,7 +107,6 @@ dependencies = [
     { name = "pytest-asyncio" },
     { name = "pytest-cov" },
     { name = "pytest-mock" },
-    { name = "python-dotenv" },
     { name = "ruff" },
     { name = "uvicorn", extra = ["standard"] },
 ]
@@ -120,7 +119,6 @@ requires-dist = [
     { name = "pytest-asyncio" },
     { name = "pytest-cov" },
     { name = "pytest-mock" },
-    { name = "python-dotenv" },
     { name = "ruff", specifier = ">=0.9.4" },
     { name = "uvicorn", extras = ["standard"] },
 ]
