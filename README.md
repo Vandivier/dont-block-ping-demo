@@ -75,8 +75,8 @@ Example:
 
 ## Testing
 
-Run the main test of interest:
-    uv run pytest tests/test_api.py::test_ping_not_blocked_by_sleeping
+Run the main suite of interest:
+    uv run pytest tests/test_api.py
 
 Run all tests (unit + integration):
     uv run pytest tests/ -v

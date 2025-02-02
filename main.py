@@ -1,3 +1,4 @@
+import asyncio
 from dotenv import load_dotenv
 import os
 from fastapi import FastAPI, HTTPException, Body
@@ -49,6 +50,14 @@ async def ask_llm(payload: dict = Body(...)):
         raise HTTPException(
             status_code=503, detail=f"Error generating response: {str(e)}"
         )
+
+
+@app.get("/async-sleep/{seconds}")
+async def asyncio_sleep(seconds: int):
+    """Test endpoint that blocks for given seconds"""
+    logger.info(f"Sleeping for {seconds} seconds")
+    await asyncio.sleep(seconds)
+    return {"status": "ok", "slept": seconds}
 
 
 @app.get("/sleep/{seconds}")
