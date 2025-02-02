@@ -49,6 +49,16 @@ Response:
       "message": "pong"
     }
 
+### GET /sleep/{seconds}
+
+Test endpoint that blocks for given seconds
+
+Response:
+    {
+      "status": "ok",
+      "slept": 5
+    }
+
 ### POST /ask
 
 Submit prompts to Gemini AI
@@ -64,6 +74,9 @@ Example:
       -d '{"prompt": "Explain quantum computing in simple terms"}'
 
 ## Testing
+
+Run the main test of interest:
+    uv run pytest tests/test_api.py::test_ping_not_blocked_by_sleeping
 
 Run all tests (unit + integration):
     uv run pytest tests/ -v

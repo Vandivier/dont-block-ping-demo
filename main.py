@@ -3,6 +3,12 @@ import os
 from fastapi import FastAPI, HTTPException, Body
 from fastapi.middleware.cors import CORSMiddleware
 import google.generativeai as genai
+import time
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 
 # Load environment variables from .env file
 load_dotenv()
@@ -43,6 +49,14 @@ async def ask_llm(payload: dict = Body(...)):
         raise HTTPException(
             status_code=503, detail=f"Error generating response: {str(e)}"
         )
+
+
+@app.get("/sleep/{seconds}")
+async def sleep(seconds: int):
+    """Test endpoint that blocks for given seconds"""
+    logger.info(f"Sleeping for {seconds} seconds")
+    time.sleep(seconds)
+    return {"status": "ok", "slept": seconds}
 
 
 if __name__ == "__main__":
